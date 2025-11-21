@@ -562,6 +562,7 @@ section.our-services .ready a {
     font-size: 18px;
     line-height: 28px;
     text-align: center;
+    display: inline-block;
 }
 
 .our-clients {
