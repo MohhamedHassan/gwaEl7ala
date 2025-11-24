@@ -50,7 +50,7 @@ nav.navbar-white {
 
 /*  */
 section.main {
-    padding-top: 90px;
+    padding-top: 100px;
     position: relative;
     min-height: 100vh;
     background-image: url('./images/Bg.png');
@@ -128,7 +128,14 @@ section.main .statistics {
     flex-wrap: wrap;
     gap: 100px;
 }
-
+@media (max-width: 992px) {
+ section.main .statistics { 
+    gap: 50px;
+}
+section.main .statistics p {
+    text-align: center;
+}
+}
 section.main .statistics li p:first-of-type {
     font-family: Cairo;
     font-weight: 700;
@@ -639,9 +646,11 @@ section.our-services .ready a {
     border: 1px solid #0000001A;
     background-color: white;
     overflow: hidden;
-    min-height: 520px;
+    min-height: 1000px;
 }
-
+.opinions .swiper-slide>div iframe {
+    max-width: 100% !important;
+}
 .opinions .swiper-slide>div p {
     padding: 32.16px;
     font-family: Tajawal;
@@ -678,9 +687,9 @@ footer .icons>div {
     border-radius: 10px;
     padding: 12px;
     display: inline;
-    color: white;
 }
-
+footer .icons>div a {
+    color: white;}
 footer h2 {
     font-family: Cairo;
     font-weight: 700;
