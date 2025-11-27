@@ -78,15 +78,15 @@
                         </div>
                         <ul class="statistics justify-content-center justify-content-lg-start">
                             <li>
-                                <p>30+</p>
+                                <p class="counter1" data-target="30">30+</p>
                                 <p>امرأة مدربة</p>
                             </li>
                             <li>
-                                <p>102+</p>
+                                <p class="counter2" data-target="102">102+</p>
                                 <p>فعالية ناجحة</p>
                             </li>
                             <li>
-                                <p>3</p>
+                                <p class="counter3" data-target="3">3</p>
                                 <p>سنوات من العطاء</p>
                             </li>
                         </ul>
@@ -248,8 +248,9 @@
             </div>
             <div class="row">
                 <article class="col-lg-4 mb-5">
-                    <div>
-                        <div class="icon"><i class="fa-solid fa-utensils"></i></div>
+                    <div class="d-flex flex-column justify-content-between ">
+                       <div>
+                         <div class="icon"><i class="fa-solid fa-utensils"></i></div>
                         <h3>الوجبات الجاهزة</h3>
                         <p>وجبات متقنة، متوازنة، وصحية، تُعد يومياً بمعايير جودة عالية.</p>
                         <ul>
@@ -257,13 +258,15 @@
                             <li>قوائم مخصصة</li>
                             <li>خدمة احترافية</li>
                         </ul>
+                       </div>
                         <a href="https://wa.me/201152902139" target="_blank">اطلب عبر واتساب</a>
                     </div>
                 </article>
                 <!-- 1 -->
                 <article class="col-lg-4 mb-5">
+                    <div class="d-flex flex-column justify-content-between ">
                     <div>
-                        <div class="icon"><i class="fa-solid fa-user-group"></i></div>
+                            <div class="icon"><i class="fa-solid fa-user-group"></i></div>
                         <h3>الوجبات شبه الجاهزة</h3>
                         <p>تُقدَّم لعملائنا الراغبين في إعداد الطعام بسرعة دون التفريط في الطعم المنزلي الأصيل.</p>
                         <ul>
@@ -271,13 +274,15 @@
                             <li>وجبات سريعة</li>
                             <li>خدمة في الموقع</li>
                         </ul>
+                    </div>
                         <a href="https://wa.me/201152902139" target="_blank">اطلب عبر واتساب</a>
                     </div>
                 </article>
                 <!-- 2 -->
                 <article class="col-lg-4 mb-5">
-                    <div>
-                        <div class="icon"><i class="fa-solid fa-user-group"></i></div>
+                    <div class="d-flex flex-column justify-content-between ">
+                      <div>
+                          <div class="icon"><i class="fa-solid fa-user-group"></i></div>
                         <h3>خدمات الكاترينج</h3>
                         <p>قوائم طعام مخصصة لحفلات الأعراس، المناسبات الخاصة، والاحتفالات العائلية</p>
                         <ul>
@@ -285,6 +290,7 @@
                             <li>وجبات سريعة</li>
                             <li>خدمة في الموقع</li>
                         </ul>
+                      </div>
                         <a href="https://wa.me/201152902139" target="_blank">اطلب عبر واتساب</a>
                     </div>
                 </article>
@@ -636,7 +642,33 @@ navLinks.forEach(link => {
     this.classList.add('active');
   });
 });
+function animateCounter(element) {
+    const target = +element.getAttribute("data-target");
+    let current = 0;
+    const duration = 700; // مدة العد بالميلي ثانية
+    const step = target / (duration / 16); // سرعة الزيادة (16ms ~ frame)
 
+    function update() {
+      current += step;
+      if (current < target) {
+        element.innerText = Math.floor(current);
+        requestAnimationFrame(update);
+      } else {
+        element.innerText = target+'+'; // لضمان الوصول للرقم النهائي
+      }
+    }
+    update();
+  }
+
+  // عند فتح الموقع
+  window.addEventListener("load", () => {
+    const counter = document.querySelector(".counter1");
+    animateCounter(counter);
+     const counter2 = document.querySelector(".counter2");
+    animateCounter(counter2);
+     const counter3 = document.querySelector(".counter3");
+    animateCounter(counter3);
+  });
     </script>
 </body>
 </body>
